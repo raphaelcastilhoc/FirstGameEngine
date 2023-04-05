@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\engine">
+      <UniqueIdentifier>{dbf1e313-4b76-4a51-9a5d-20845b413754}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\core">
+      <UniqueIdentifier>{ab2e63e6-8636-4ec5-9843-180f6ffab051}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine">
+      <UniqueIdentifier>{e5e97d16-eedd-44b7-bc54-2ef081549471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\core">
+      <UniqueIdentifier>{89e554e0-5d3d-43c8-862c-8fe9266e3e12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game">
+      <UniqueIdentifier>{bc06e933-3e93-4d14-81e1-aa2e6263843f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\events">
+      <UniqueIdentifier>{565f293b-74e5-444d-8f63-10feec81bd45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\math">
+      <UniqueIdentifier>{924eae91-1b2e-4043-aaae-2cc74419c987}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\ecs">
+      <UniqueIdentifier>{bdd3c88c-2676-4eed-929e-d5e357fd20ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\ecs\components">
+      <UniqueIdentifier>{898c641c-38f0-4378-bffb-562e15e9adb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\ecs\systems">
+      <UniqueIdentifier>{73b596fb-e63c-4c68-829a-6f0bd9d6706c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="application.h">
+      <Filter>Header Files\engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="entry.h">
+      <Filter>Header Files\engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>Header Files\engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="typeid.h">
+      <Filter>Header Files\engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="event.h">
+      <Filter>Header Files\engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="dispatcher.h">
+      <Filter>Header Files\engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="event_system.h">
+      <Filter>Header Files\engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="vec2.h">
+      <Filter>Header Files\engine\math</Filter>
+    </ClInclude>
+    <ClInclude Include="registry.h">
+      <Filter>Header Files\engine\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="system.h">
+      <Filter>Header Files\engine\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="entity.h">
+      <Filter>Header Files\engine\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="ecs.h">
+      <Filter>Header Files\engine\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Header Files\engine\ecs\components</Filter>
+    </ClInclude>
+    <ClInclude Include="test_system.h">
+      <Filter>Header Files\engine\ecs\systems</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="application.cpp">
+      <Filter>Source Files\engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>Source Files\engine\core</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
