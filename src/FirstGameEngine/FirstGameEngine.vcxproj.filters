@@ -90,6 +90,9 @@
     <ClInclude Include="test_system.h">
       <Filter>Header Files\engine\ecs\systems</Filter>
     </ClInclude>
+    <ClInclude Include="scene.h">
+      <Filter>Header Files\engine\ecs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

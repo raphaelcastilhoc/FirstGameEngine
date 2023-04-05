@@ -1,6 +1,7 @@
 #include "application.h"
 #include "input.h"
 #include "event_system.h"
+#include "scene.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
@@ -61,6 +62,9 @@ namespace game_engine
         auto dispatcher = input::get_dispatcher();
         dispatcher->add_callback<quit_event>(on_quit);
 
+        auto scene = new ecs::scene(renderer);
+        scene->start();
+
         while (is_running)
         {
             if (input::is_button(SDL_BUTTON_LEFT))
@@ -76,9 +80,13 @@ namespace game_engine
 
             input::dispatch_events();
             SDL_RenderClear(renderer);
+            scene->update(0.0f);
             SDL_RenderPresent(renderer);
         }
 
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        GAMEENGINE_DELETE(scene);
         IMG_Quit();
         Mix_Quit();
         TTF_Quit();
