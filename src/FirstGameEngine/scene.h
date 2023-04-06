@@ -3,6 +3,7 @@
 #include "graphics.h"
 #include "common.h"
 #include "sprite_renderer_system.h"
+#include "text_renderer_system.h"
 
 namespace game_engine::ecs
 {
@@ -11,6 +12,7 @@ namespace game_engine::ecs
 		GAMEENGINE_INLINE scene(SDL_Renderer* rd) : _renderer(rd)
 		{
 			register_system<ecs::sprite_renderer_system>();
+			register_system<ecs::text_renderer_system>();
 		}
 
 		GAMEENGINE_INLINE ~scene()
@@ -30,6 +32,7 @@ namespace game_engine::ecs
 
 		GAMEENGINE_INLINE void update(float dt)
 		{
+			SDL_SetRenderDrawColor(_renderer, 255, 255, 255, 255);
 			for (auto& sys : _systems)
 			{
 				sys->update(dt);
@@ -38,10 +41,15 @@ namespace game_engine::ecs
 
 		GAMEENGINE_INLINE void start()
 		{
-			auto sprite = _assets.load_texture("resource/tex.png", "test", _renderer);
-
 			auto entity = add_entity("entity");
+
+			auto sprite = _assets.load_texture("resource/textures/tex.png", "texture", _renderer);
 			entity.add_component<ecs::sprite_component>().sprite = sprite->id;
+
+			auto font = _assets.load_font("resource/fonts/font.ttf", "font", 30);
+			auto& text = entity.add_component<ecs::text_component>();
+			text.text = "Example text";
+			text.font = font->id;
 
 			for (auto& sys : _systems)
 			{

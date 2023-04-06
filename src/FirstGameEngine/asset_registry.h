@@ -8,6 +8,7 @@
 #include "typeid.h"
 
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 
 namespace game_engine
 {
@@ -112,6 +113,27 @@ namespace game_engine
 			asset->name = name;
 
 			_data[type_id<texture_asset>()].push_back(asset);
+			return asset;
+		}
+
+		GAMEENGINE_INLINE font_asset* load_font(const std::string& src, const std::string& name, int size)
+		{
+			font font;
+			font.data = TTF_OpenFont(src.c_str(), size);
+			font.filename = src;
+			font.size = size;
+
+			if (!font.data)
+			{
+				GAMEENGINE_ERROR("%s", IMG_GetError());
+				return NULL;
+			}
+
+			auto asset = new font_asset();
+			asset->instance = font;
+			asset->name = name;
+
+			_data[type_id<font_asset>()].push_back(asset);
 			return asset;
 		}
 

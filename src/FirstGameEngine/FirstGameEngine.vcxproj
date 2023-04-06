@@ -149,6 +149,7 @@
     <ClInclude Include="sprite_renderer_system.h" />
     <ClInclude Include="system.h" />
     <ClInclude Include="texture.h" />
+    <ClInclude Include="text_renderer_system.h" />
     <ClInclude Include="tilemap.h" />
     <ClInclude Include="typeid.h" />
     <ClInclude Include="vec2.h" />
@@ -160,7 +161,10 @@
     <ClCompile Include="pch.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resource\tex.png" />
+    <Image Include="resource\textures\tex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resource\fonts\font.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
