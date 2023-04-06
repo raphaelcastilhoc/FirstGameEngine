@@ -43,6 +43,9 @@
     <Filter Include="Header Files\engine\ecs\systems">
       <UniqueIdentifier>{73b596fb-e63c-4c68-829a-6f0bd9d6706c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\assets">
+      <UniqueIdentifier>{45efb7ab-4584-4d9b-86f6-328469f45f29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -72,7 +75,7 @@
     <ClInclude Include="vec2.h">
       <Filter>Header Files\engine\math</Filter>
     </ClInclude>
-    <ClInclude Include="registry.h">
+    <ClInclude Include="ecs_registry.h">
       <Filter>Header Files\engine\ecs</Filter>
     </ClInclude>
     <ClInclude Include="system.h">
@@ -92,6 +95,27 @@
     </ClInclude>
     <ClInclude Include="scene.h">
       <Filter>Header Files\engine\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="animation.h">
+      <Filter>Header Files\engine\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="asset.h">
+      <Filter>Header Files\engine\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="asset_registry.h">
+      <Filter>Header Files\engine\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="audio.h">
+      <Filter>Header Files\engine\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="font.h">
+      <Filter>Header Files\engine\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>Header Files\engine\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="tilemap.h">
+      <Filter>Header Files\engine\assets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

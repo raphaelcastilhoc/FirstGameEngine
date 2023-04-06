@@ -1,5 +1,5 @@
 #pragma once
-#include "registry.h"
+#include "ecs_registry.h"
 
 namespace game_engine::ecs
 {

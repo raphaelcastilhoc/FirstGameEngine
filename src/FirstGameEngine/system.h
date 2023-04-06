@@ -1,5 +1,6 @@
 #pragma once
 #include "entity.h"
+#include "asset_registry.h"
 
 namespace game_engine::ecs
 {
@@ -7,10 +8,11 @@ namespace game_engine::ecs
     {
         GAMEENGINE_INLINE virtual ~system() = default;
 
-        GAMEENGINE_INLINE void prepare(registry* rg, SDL_Renderer* rd)
+        GAMEENGINE_INLINE void prepare(registry* registry, SDL_Renderer* renderer, asset_registry* asset_registry)
         {
-            this->_registry = rg;
-            this->_renderer = rd;
+            this->_registry = registry;
+            this->_renderer = renderer;
+            this->_assets = asset_registry;
         }
 
         template<typename T>
@@ -31,5 +33,6 @@ namespace game_engine::ecs
     protected:
         SDL_Renderer* _renderer = NULL;
         registry* _registry = NULL;
+        asset_registry* _assets = NULL;
     };
 }
