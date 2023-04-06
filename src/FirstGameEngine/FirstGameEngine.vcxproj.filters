@@ -90,9 +90,6 @@
     <ClInclude Include="common.h">
       <Filter>Header Files\engine\ecs\components</Filter>
     </ClInclude>
-    <ClInclude Include="test_system.h">
-      <Filter>Header Files\engine\ecs\systems</Filter>
-    </ClInclude>
     <ClInclude Include="scene.h">
       <Filter>Header Files\engine\ecs</Filter>
     </ClInclude>
@@ -117,6 +114,12 @@
     <ClInclude Include="tilemap.h">
       <Filter>Header Files\engine\assets</Filter>
     </ClInclude>
+    <ClInclude Include="graphics.h">
+      <Filter>Header Files\engine\ecs\components</Filter>
+    </ClInclude>
+    <ClInclude Include="sprite_renderer_system.h">
+      <Filter>Header Files\engine\ecs\systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -131,5 +134,10 @@
     <ClCompile Include="input.cpp">
       <Filter>Source Files\engine\core</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resource\tex.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

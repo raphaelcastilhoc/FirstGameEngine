@@ -7,6 +7,8 @@
 #include "animation.h"
 #include "typeid.h"
 
+#include <SDL2/SDL_image.h>
+
 namespace game_engine
 {
 	struct asset_registry
@@ -89,6 +91,27 @@ namespace game_engine
 			auto asset = new T();
 			asset->name = name;
 			_data[type_id<T>()].push_back(asset);
+			return asset;
+		}
+
+		GAMEENGINE_INLINE texture_asset* load_texture(const std::string& src, const std::string& name, SDL_Renderer* rd)
+		{
+			texture texture;
+			texture.data = IMG_LoadTexture(rd, src.c_str());
+			texture.filename = src;
+
+			if (!texture.data)
+			{
+				GAMEENGINE_ERROR("%s", IMG_GetError());
+				return NULL;
+			}
+
+			SDL_QueryTexture(texture.data, NULL, NULL, &texture.width, &texture.height);
+			auto asset = new texture_asset();
+			asset->instance = texture;
+			asset->name = name;
+
+			_data[type_id<texture_asset>()].push_back(asset);
 			return asset;
 		}
 

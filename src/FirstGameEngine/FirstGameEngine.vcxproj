@@ -140,13 +140,14 @@
     <ClInclude Include="entry.h" />
     <ClInclude Include="event.h" />
     <ClInclude Include="font.h" />
+    <ClInclude Include="graphics.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="ecs_registry.h" />
     <ClInclude Include="event_system.h" />
     <ClInclude Include="scene.h" />
+    <ClInclude Include="sprite_renderer_system.h" />
     <ClInclude Include="system.h" />
-    <ClInclude Include="test_system.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="tilemap.h" />
     <ClInclude Include="typeid.h" />
@@ -157,6 +158,9 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="pch.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resource\tex.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

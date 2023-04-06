@@ -1,6 +1,8 @@
 #pragma once
-#include "test_system.h"
 #include "asset_registry.h"
+#include "graphics.h"
+#include "common.h"
+#include "sprite_renderer_system.h"
 
 namespace game_engine::ecs
 {
@@ -8,7 +10,7 @@ namespace game_engine::ecs
 	{
 		GAMEENGINE_INLINE scene(SDL_Renderer* rd) : _renderer(rd)
 		{
-			register_system<ecs::test_system>();
+			register_system<ecs::sprite_renderer_system>();
 		}
 
 		GAMEENGINE_INLINE ~scene()
@@ -36,17 +38,11 @@ namespace game_engine::ecs
 
 		GAMEENGINE_INLINE void start()
 		{
-			auto frame1 = _assets.add<texture_asset>("frame1");
-			auto frame2 = _assets.add<texture_asset>("frame2");
-			auto anim = _assets.add<animation_asset>("test");
+			auto sprite = _assets.load_texture("resource/tex.png", "test", _renderer);
 
-			anim->instance.frames.push_back(frame1->id);
-			anim->instance.frames.push_back(frame2->id);
-			anim->instance.speed = 200;
+			auto entity = add_entity("entity");
+			entity.add_component<ecs::sprite_component>().sprite = sprite->id;
 
-
-			auto e = this->add_entity("test");
-			e.add_component<transform_component>();
 			for (auto& sys : _systems)
 			{
 				sys->start();
