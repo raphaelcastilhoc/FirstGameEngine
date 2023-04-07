@@ -46,6 +46,9 @@
     <Filter Include="Header Files\engine\assets">
       <UniqueIdentifier>{45efb7ab-4584-4d9b-86f6-328469f45f29}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\physics">
+      <UniqueIdentifier>{2bac1663-6855-4943-be91-df9ca322ba02}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -127,6 +130,15 @@
       <Filter>Header Files\engine\ecs\systems</Filter>
     </ClInclude>
     <ClInclude Include="tilemap_renderer_system.h">
+      <Filter>Header Files\engine\ecs\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="rigidbody2.h">
+      <Filter>Header Files\engine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics.h">
+      <Filter>Header Files\engine\ecs\components</Filter>
+    </ClInclude>
+    <ClInclude Include="rigidbody_system.h">
       <Filter>Header Files\engine\ecs\systems</Filter>
     </ClInclude>
   </ItemGroup>

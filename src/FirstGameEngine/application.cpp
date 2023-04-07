@@ -11,10 +11,22 @@
 namespace game_engine
 {
     static bool is_running = true;
+    static float delta_time;
+    static float last_tick;
 
     GAMEENGINE_INLINE bool on_quit(const quit_event&)
     {
         return is_running = false;
+    }
+
+    GAMEENGINE_INLINE void compute_delta_time()
+    {
+        delta_time = get_ticks() - last_tick;
+        if (delta_time > MAX_DELTATIME)
+        {
+            delta_time = MAX_DELTATIME;
+        }
+        last_tick = get_ticks();
     }
 
     void run_application(const app_config& config)
@@ -65,23 +77,17 @@ namespace game_engine
         auto scene = new ecs::scene(renderer);
         scene->start();
 
+        last_tick = get_ticks();
+
         while (is_running)
         {
-            if (input::is_button(SDL_BUTTON_LEFT))
-            {
-                auto mouse = input::mouse_offset();
-                GAMEENGINE_INFO("x position is: %f and y position is: %f", mouse.x, mouse.y);
-            }
-
-            if (input::is_key(SDL_SCANCODE_A))
-            {
-                GAMEENGINE_INFO("Key 'a' is pressed");
-            }
-
+            compute_delta_time();
             input::dispatch_events();
             SDL_RenderClear(renderer);
-            scene->update(0.0f);
+            scene->update(delta_time);
             SDL_RenderPresent(renderer);
+
+            GAMEENGINE_INFO("delta time is: %f", delta_time);
         }
 
         SDL_DestroyRenderer(renderer);

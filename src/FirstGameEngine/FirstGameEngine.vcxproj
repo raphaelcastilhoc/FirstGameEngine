@@ -146,6 +146,9 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="ecs_registry.h" />
     <ClInclude Include="event_system.h" />
+    <ClInclude Include="physics.h" />
+    <ClInclude Include="rigidbody2.h" />
+    <ClInclude Include="rigidbody_system.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="sprite_renderer_system.h" />
     <ClInclude Include="system.h" />

@@ -2,10 +2,12 @@
 #include "asset_registry.h"
 #include "graphics.h"
 #include "common.h"
+#include "physics.h"
 #include "sprite_renderer_system.h"
 #include "text_renderer_system.h"
 #include "frame_animation_system.h"
 #include "tilemap_renderer_system.h"
+#include "rigidbody_system.h"
 
 namespace game_engine::ecs
 {
@@ -17,6 +19,7 @@ namespace game_engine::ecs
 			register_system<ecs::text_renderer_system>();
 			register_system<ecs::frame_animation_system>();
 			register_system<ecs::tilemap_renderer_system>();
+			register_system<ecs::rigidbody_system>();
 		}
 
 		GAMEENGINE_INLINE ~scene()
@@ -47,53 +50,10 @@ namespace game_engine::ecs
 		{
 			auto entity = add_entity("entity");
 
-		/*	auto sprite = _assets.load_texture("resource/textures/tex.png", "texture", _renderer);
-			entity.add_component<ecs::sprite_component>().sprite = sprite->id;
-
-			auto font = _assets.load_font("resource/fonts/font.ttf", "font", 30);
-			auto& text_component = entity.add_component<ecs::text_component>();
-			text_component.text = "Example text";
-			text_component.font = font->id;
-
-			auto frame1 = _assets.load_texture("resource/textures/character_1.png", "frame1", _renderer);
-			auto frame2 = _assets.load_texture("resource/textures/character_2.png", "frame2", _renderer);
-			auto frame3 = _assets.load_texture("resource/textures/character_3.png", "frame3", _renderer);
-
-			auto animation = _assets.add<animation_asset>("dance");
-			animation->instance.frames.push_back(frame1->id);
-			animation->instance.frames.push_back(frame2->id);
-			animation->instance.frames.push_back(frame3->id);
-			animation->instance.speed =150;
-
-			auto& animation_component = entity.add_component<ecs::animation_component>();
-			animation_component.animation = animation->id;*/
-
-			auto tileset = _assets.load_texture("resource/textures/tex.png", "tileset", _renderer);
-
-			// create tilemap asset
-			auto tilemap = _assets.add<tilemap_asset>("tilemap");
-			tilemap->instance.tilesets.insert(tileset->id);
-			tilemap->instance.col_count = 16;
-			tilemap->instance.row_count = 8;
-			tilemap->instance.tilesize = 64;
-
-			entity.add_component<tilemap_component>().tilemap = tilemap->id;
-
-			// turn image into multiple entities with tiles
-			for (int col = 0; col < tilemap->instance.col_count; col++)
-			{
-				for (int row = 0; row < tilemap->instance.row_count; row++)
-				{
-					ecs::entity tile_entity = add_entity("tile");
-					auto& tile = tile_entity.add_component<tile_component>();
-					tile.tileset = tileset->id;
-					tile.tilemap = tilemap->id;
-					tile.offset_x = col;
-					tile.offset_y = row;
-					tile.row = col;
-					tile.col = row;
-				}
-			}
+			auto texture1 = _assets.load_texture("resource/textures/obj1.png", "", _renderer);
+			entity.add_component<sprite_component>().sprite = texture1->id;
+			auto& rigidbody = entity.add_component<rigidbody_component>();
+			rigidbody.body.gravity_scale = 1.0f;
 
 			for (auto& sys : _systems)
 			{

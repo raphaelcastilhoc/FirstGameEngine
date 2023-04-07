@@ -9,11 +9,9 @@ namespace game_engine::ecs
 		{
 			for (auto& e : view<animation_component>())
 			{
-				// get components
 				auto& tr = e.get_component<transform_component>();
 				auto& an = e.get_component<animation_component>();
 
-				// get animation from asset registry
 				auto& anim = _assets->get<animation_asset>(an.animation)->instance;
 
 				// compute current frame
