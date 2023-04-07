@@ -141,6 +141,9 @@
     <ClInclude Include="rigidbody_system.h">
       <Filter>Header Files\engine\ecs\systems</Filter>
     </ClInclude>
+    <ClInclude Include="collision_system.h">
+      <Filter>Header Files\engine\ecs\systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

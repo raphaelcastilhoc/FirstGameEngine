@@ -8,6 +8,7 @@
 #include "frame_animation_system.h"
 #include "tilemap_renderer_system.h"
 #include "rigidbody_system.h"
+#include "collision_system.h"
 
 namespace game_engine::ecs
 {
@@ -20,6 +21,7 @@ namespace game_engine::ecs
 			register_system<ecs::frame_animation_system>();
 			register_system<ecs::tilemap_renderer_system>();
 			register_system<ecs::rigidbody_system>();
+			register_system<ecs::collision_system>();
 		}
 
 		GAMEENGINE_INLINE ~scene()
@@ -39,21 +41,37 @@ namespace game_engine::ecs
 
 		GAMEENGINE_INLINE void update(float dt)
 		{
-			SDL_SetRenderDrawColor(_renderer, 255, 255, 255, 255);
 			for (auto& sys : _systems)
 			{
 				sys->update(dt);
 			}
+
+			SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255);
+			for (auto& e : _registry.view<collider_component>())
+			{
+				auto& c = _registry.get_component<collider_component>(e);
+				SDL_RenderDrawRectF(_renderer, &c.collider);
+			}
+
+			SDL_SetRenderDrawColor(_renderer, 255, 255, 255, 255);
 		}
 
 		GAMEENGINE_INLINE void start()
 		{
 			auto entity = add_entity("entity");
+			
 
 			auto texture1 = _assets.load_texture("resource/textures/obj1.png", "", _renderer);
 			entity.add_component<sprite_component>().sprite = texture1->id;
-			auto& rigidbody = entity.add_component<rigidbody_component>();
-			rigidbody.body.gravity_scale = 1.0f;
+			entity.add_component<rigidbody_component>().body.set_force_x(-50);
+			entity.get_component<transform_component>().translate.x = 500;
+			entity.add_component<collider_component>();
+
+			auto entity2 = add_entity("entity 2");
+			auto texture2 = _assets.load_texture("resource/textures/obj2.png", "", _renderer);
+			entity2.add_component<sprite_component>().sprite = texture2->id;
+			entity2.add_component<rigidbody_component>().body.set_force_x(50);
+			entity2.add_component<collider_component>();
 
 			for (auto& sys : _systems)
 			{

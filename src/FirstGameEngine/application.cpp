@@ -86,8 +86,6 @@ namespace game_engine
             SDL_RenderClear(renderer);
             scene->update(delta_time);
             SDL_RenderPresent(renderer);
-
-            GAMEENGINE_INFO("delta time is: %f", delta_time);
         }
 
         SDL_DestroyRenderer(renderer);
