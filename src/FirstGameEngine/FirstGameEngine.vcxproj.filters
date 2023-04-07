@@ -46,12 +46,6 @@
     <Filter Include="Header Files\engine\assets">
       <UniqueIdentifier>{45efb7ab-4584-4d9b-86f6-328469f45f29}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\textures">
-      <UniqueIdentifier>{e5cbc090-a0e4-4667-8b40-a8604b537661}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\fonts">
-      <UniqueIdentifier>{1bb0fcc7-02ee-45f6-9aa3-c5bbe2f239c5}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -129,6 +123,9 @@
     <ClInclude Include="text_renderer_system.h">
       <Filter>Header Files\engine\ecs\systems</Filter>
     </ClInclude>
+    <ClInclude Include="frame_animation_system.h">
+      <Filter>Header Files\engine\ecs\systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -143,15 +140,5 @@
     <ClCompile Include="input.cpp">
       <Filter>Source Files\engine\core</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="resource\textures\tex.png">
-      <Filter>Resource Files\textures</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="resource\fonts\font.ttf">
-      <Filter>Resource Files\fonts</Filter>
-    </Font>
   </ItemGroup>
 </Project>

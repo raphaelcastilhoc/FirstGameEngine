@@ -22,4 +22,12 @@ namespace game_engine::ecs
 		asset_id font = INVALID_ID;
 		std::string text;
 	};
+
+	struct animation_component
+	{
+		GAMEENGINE_INLINE animation_component(const animation_component&) = default;
+		GAMEENGINE_INLINE animation_component() = default;
+		SDL_RendererFlip flip = SDL_FLIP_NONE;
+		asset_id animation = INVALID_ID;
+	};
 }

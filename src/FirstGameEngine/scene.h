@@ -4,6 +4,7 @@
 #include "common.h"
 #include "sprite_renderer_system.h"
 #include "text_renderer_system.h"
+#include "frame_animation_system.h"
 
 namespace game_engine::ecs
 {
@@ -13,6 +14,7 @@ namespace game_engine::ecs
 		{
 			register_system<ecs::sprite_renderer_system>();
 			register_system<ecs::text_renderer_system>();
+			register_system<ecs::frame_animation_system>();
 		}
 
 		GAMEENGINE_INLINE ~scene()
@@ -43,13 +45,26 @@ namespace game_engine::ecs
 		{
 			auto entity = add_entity("entity");
 
-			auto sprite = _assets.load_texture("resource/textures/tex.png", "texture", _renderer);
+		/*	auto sprite = _assets.load_texture("resource/textures/tex.png", "texture", _renderer);
 			entity.add_component<ecs::sprite_component>().sprite = sprite->id;
 
 			auto font = _assets.load_font("resource/fonts/font.ttf", "font", 30);
-			auto& text = entity.add_component<ecs::text_component>();
-			text.text = "Example text";
-			text.font = font->id;
+			auto& text_component = entity.add_component<ecs::text_component>();
+			text_component.text = "Example text";
+			text_component.font = font->id;*/
+
+			auto frame1 = _assets.load_texture("resource/textures/character_1.png", "frame1", _renderer);
+			auto frame2 = _assets.load_texture("resource/textures/character_2.png", "frame2", _renderer);
+			auto frame3 = _assets.load_texture("resource/textures/character_3.png", "frame3", _renderer);
+
+			auto animation = _assets.add<animation_asset>("dance");
+			animation->instance.frames.push_back(frame1->id);
+			animation->instance.frames.push_back(frame2->id);
+			animation->instance.frames.push_back(frame3->id);
+			animation->instance.speed =150;
+
+			auto& animation_component = entity.add_component<ecs::animation_component>();
+			animation_component.animation = animation->id;
 
 			for (auto& sys : _systems)
 			{
