@@ -30,4 +30,22 @@ namespace game_engine::ecs
 		SDL_RendererFlip flip = SDL_FLIP_NONE;
 		asset_id animation = INVALID_ID;
 	};
+
+	struct tilemap_component
+	{
+		GAMEENGINE_INLINE tilemap_component(const tilemap_component&) = default;
+		GAMEENGINE_INLINE tilemap_component() = default;
+		asset_id tilemap = INVALID_ID;
+	};
+
+	struct tile_component
+	{
+		GAMEENGINE_INLINE tile_component(const tile_component&) = default;
+		GAMEENGINE_INLINE tile_component() = default;
+		SDL_RendererFlip flip = SDL_FLIP_NONE;
+		asset_id tilemap = INVALID_ID;
+		asset_id tileset = INVALID_ID;
+		float offset_x, offset_y = 0;
+		int row, col = 0;
+	};
 }

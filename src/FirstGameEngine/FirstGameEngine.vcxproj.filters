@@ -126,6 +126,9 @@
     <ClInclude Include="frame_animation_system.h">
       <Filter>Header Files\engine\ecs\systems</Filter>
     </ClInclude>
+    <ClInclude Include="tilemap_renderer_system.h">
+      <Filter>Header Files\engine\ecs\systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

@@ -152,6 +152,7 @@
     <ClInclude Include="texture.h" />
     <ClInclude Include="text_renderer_system.h" />
     <ClInclude Include="tilemap.h" />
+    <ClInclude Include="tilemap_renderer_system.h" />
     <ClInclude Include="typeid.h" />
     <ClInclude Include="vec2.h" />
   </ItemGroup>
