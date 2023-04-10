@@ -49,6 +49,9 @@
     <Filter Include="Header Files\engine\physics">
       <UniqueIdentifier>{2bac1663-6855-4943-be91-df9ca322ba02}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\scripts">
+      <UniqueIdentifier>{f9fdfc3a-64f2-423a-8cab-b5f65d4a8561}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -143,6 +146,18 @@
     </ClInclude>
     <ClInclude Include="collision_system.h">
       <Filter>Header Files\engine\ecs\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="script_instance.h">
+      <Filter>Header Files\engine\scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="behavior.h">
+      <Filter>Header Files\engine\ecs\components</Filter>
+    </ClInclude>
+    <ClInclude Include="script_system.h">
+      <Filter>Header Files\engine\ecs\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="player_controller.h">
+      <Filter>Header Files\engine\scripts</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

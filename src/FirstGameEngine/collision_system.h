@@ -1,5 +1,6 @@
 #pragma once
 #include "system.h"
+#include "behavior.h"
 
 namespace game_engine::ecs
 {
@@ -46,7 +47,11 @@ namespace game_engine::ecs
 					auto& second_entity_collider = second_entity.get_component<collider_component>();
 					if (check_collision(first_entity_collider.collider, second_entity_collider.collider))
 					{
-						GAMEENGINE_INFO("collision: %d -> %d", entity.id(), second_entity.id());
+						if (entity.has_component<script_component>())
+						{
+							auto& script = entity.get_component<script_component>();
+							script.instance->on_collision(second_entity);
+						}
 					}
 				}
 			}
