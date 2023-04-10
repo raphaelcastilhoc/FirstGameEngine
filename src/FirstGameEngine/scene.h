@@ -11,6 +11,7 @@
 #include "collision_system.h"
 #include "script_system.h"
 #include "player_controller.h"
+#include "scrolling_ground.h"
 
 namespace game_engine::ecs
 {
@@ -49,31 +50,45 @@ namespace game_engine::ecs
 				sys->update(dt);
 			}
 
-			SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255);
-			for (auto& e : _registry.view<collider_component>())
-			{
-				auto& c = _registry.get_component<collider_component>(e);
-				SDL_RenderDrawRectF(_renderer, &c.collider);
-			}
-
 			SDL_SetRenderDrawColor(_renderer, 255, 255, 255, 255);
 		}
 
 		GAMEENGINE_INLINE void start()
 		{
-			auto entity = add_entity("entity");
+			auto dead = _assets.load_texture("resource/textures/dead.png", "dead", _renderer);
+			auto fly = _assets.load_texture("resource/textures/fly.png", "fly", _renderer);
+			auto pipe = _assets.load_texture("resource/textures/pipe.png", "pipe", _renderer);
+			auto ground = _assets.load_texture("resource/textures/ground.png", "ground", _renderer);
 			
+			auto font = _assets.load_font("resource/fonts/font.ttf", "font", 30);
 
-			auto texture1 = _assets.load_texture("resource/textures/obj1.png", "", _renderer);
-			entity.add_component<script_component>().bind<player_controller>();
-			entity.add_component<sprite_component>().sprite = texture1->id;
-			entity.get_component<transform_component>().translate.x = 500;
-			entity.add_component<collider_component>();
+			auto bg = add_entity("background");
+			auto background = _assets.load_texture("resource/textures/background.png", "bg", _renderer);
+			bg.add_component<sprite_component>().sprite = background->id;
 
-			auto entity2 = add_entity("entity 2");
-			auto texture2 = _assets.load_texture("resource/textures/obj2.png", "", _renderer);
-			entity2.add_component<sprite_component>().sprite = texture2->id;
-			entity2.add_component<collider_component>();
+			auto gd = add_entity("ground");
+			auto& gds = gd.add_component<ecs::script_component>();
+			gds.bind<scrolling_ground>();
+			gds.name = "scrolling_ground";
+			auto& gd_tr = gd.get_component<transform_component>();
+			gd_tr.translate = vec2f(0.0f, 620);
+			gd.add_component<rigidbody_component>().body.velocity.x = -100.0f;
+			auto& gd_sp = gd.add_component<sprite_component>().sprite = ground->id;
+			auto& gd_cl = gd.add_component<collider_component>();
+			gd_cl.collider = { 0, 0, (float)ground->instance.width, (float)ground->instance.height };
+
+			auto player = add_entity("player");
+			auto& ps = player.add_component<ecs::script_component>();
+			ps.bind<player_controller>();
+			ps.name = "player_controller";
+			auto& tr = player.get_component<transform_component>();
+			tr.translate = vec2f(126, 360);
+			tr.scale = vec2f(0.5f);
+			auto& rb = player.add_component<rigidbody_component>();
+			rb.body.gravity_scale = 25.0f;
+			player.add_component<sprite_component>().sprite = fly->id;
+			auto& cl = player.add_component<collider_component>();
+			cl.collider = { 0, 0, 58, 38 };
 
 			for (auto& sys : _systems)
 			{

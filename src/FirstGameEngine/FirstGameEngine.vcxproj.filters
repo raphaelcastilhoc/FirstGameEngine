@@ -159,6 +159,9 @@
     <ClInclude Include="player_controller.h">
       <Filter>Header Files\engine\scripts</Filter>
     </ClInclude>
+    <ClInclude Include="scrolling_ground.h">
+      <Filter>Header Files\engine\scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

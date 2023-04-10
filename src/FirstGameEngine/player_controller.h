@@ -13,28 +13,22 @@ namespace game_engine
 
         GAMEENGINE_INLINE void on_collision(ecs::entity collided_entity)
         {
-            GAMEENGINE_INFO("Colliding with: %d", collided_entity.id());
+            auto& sp = get_component<ecs::sprite_component>();
+            sp.sprite = get_asset<texture_asset>("dead")->id;
+            get_component<ecs::collider_component>().disabled = true;
+            get_component<ecs::rigidbody_component>().disabled = true;
         }
 
         GAMEENGINE_INLINE void on_update(float dt)
         {
-            auto& t = get_component<ecs::transform_component>();
-
-            if (input::is_key(SDL_SCANCODE_A))
-            { // move left
-                t.translate.x -= (speed * dt);
+            auto& rb = get_component<ecs::rigidbody_component>();
+            if (input::is_key(SDL_SCANCODE_SPACE))
+            {
+                rb.body.set_force_y(-1000.0f);
             }
-            if (input::is_key(SDL_SCANCODE_D))
-            { // move right
-                t.translate.x += (speed * dt);
-            }
-            if (input::is_key(SDL_SCANCODE_W))
-            { // move up
-                t.translate.y -= (speed * dt);
-            }
-            if (input::is_key(SDL_SCANCODE_S))
-            { // move down
-                t.translate.y += (speed * dt);
+            else
+            {
+                rb.body.set_force_y(0.0f);
             }
         }
 

@@ -68,6 +68,31 @@ namespace game_engine
             return ecs::entity(entity, _registry);
         }
 
+        GAMEENGINE_INLINE void destroy()
+        {
+            _registry->destroy(_entity);
+        }
+
+        GAMEENGINE_INLINE ecs::entity find_entity(const std::string& name)
+        {
+            for (auto& e : _registry->view<ecs::info_component>())
+            {
+                auto& i = _registry->get_component<ecs::info_component>(e);
+
+                if (!i.name.compare(name))
+                {
+                    return ecs::entity(e, _registry);
+                }
+            }
+            return ecs::entity();
+        }
+
+        template<typename T>
+        GAMEENGINE_INLINE T* get_asset(const std::string& name)
+        {
+            return _assets->get<T>(name);
+        }
+
     private:
         ecs::entityid _entity = INVALID_ID;
         ecs::registry* _registry = NULL;
