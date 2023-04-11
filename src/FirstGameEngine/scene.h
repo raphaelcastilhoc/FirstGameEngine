@@ -13,6 +13,7 @@
 #include "player_controller.h"
 #include "scrolling_ground.h"
 #include "pipe_spawner.h"
+#include "serializer.h"
 
 namespace game_engine::ecs
 {

@@ -52,6 +52,9 @@
     <Filter Include="Header Files\engine\scripts">
       <UniqueIdentifier>{f9fdfc3a-64f2-423a-8cab-b5f65d4a8561}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\helpers">
+      <UniqueIdentifier>{ca709735-a0d6-4154-b5a5-3d76ab1e4050}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -167,6 +170,12 @@
     </ClInclude>
     <ClInclude Include="random.h">
       <Filter>Header Files\engine\math</Filter>
+    </ClInclude>
+    <ClInclude Include="yaml.h">
+      <Filter>Header Files\engine\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="serializer.h">
+      <Filter>Header Files\engine\ecs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
