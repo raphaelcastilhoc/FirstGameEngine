@@ -6,6 +6,11 @@ namespace game_engine
 {
 	struct pipe_spawner : script_instance
 	{
+		GAMEENGINE_INLINE void on_start()
+		{
+			play_audio("music", 1, -1);
+		}
+
 		GAMEENGINE_INLINE void on_update(float dt)
 		{
 			if (game_over)

@@ -63,6 +63,9 @@ namespace game_engine::ecs
 			
 			auto font = _assets.load_font("resource/fonts/font.ttf", "font", 30);
 
+			_assets.load_audio("resource/audios/song.mp3", "music");
+			_assets.load_audio("resource/audios/boom.wav", "boom");
+
 			auto bg = add_entity("background");
 			auto background = _assets.load_texture("resource/textures/background.png", "bg", _renderer);
 			bg.add_component<sprite_component>().sprite = background->id;

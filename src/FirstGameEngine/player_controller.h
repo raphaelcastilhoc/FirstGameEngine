@@ -13,6 +13,7 @@ namespace game_engine
 
         GAMEENGINE_INLINE void on_collision(ecs::entity collided_entity)
         {
+            play_audio("boom");
             auto& sp = get_component<ecs::sprite_component>();
             sp.sprite = get_asset<texture_asset>("dead")->id;
             get_component<ecs::collider_component>().disabled = true;

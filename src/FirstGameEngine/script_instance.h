@@ -93,6 +93,13 @@ namespace game_engine
             return _assets->get<T>(name);
         }
 
+        GAMEENGINE_INLINE void play_audio(std::string name, int channel = -1, int loops = 0, int vol = 50)
+        {
+            auto& chunck = _assets->get<audio_asset>(name)->instance.data;
+            Mix_VolumeChunk(chunck, vol);
+            Mix_PlayChannel(channel, chunck, loops);
+        }
+
     private:
         ecs::entityid _entity = INVALID_ID;
         ecs::registry* _registry = NULL;
