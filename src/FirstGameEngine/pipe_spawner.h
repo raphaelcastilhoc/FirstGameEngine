@@ -24,6 +24,10 @@ namespace game_engine
 				auto& ground_rigidbody = ground.get_component<ecs::rigidbody_component>();
 				ground_rigidbody.disabled = true;
 
+				auto score = find_entity("score");
+				auto& score_text = score.get_component<ecs::text_component>();
+				score_text.text = "GAME OVER";
+
 				// stop all pipes motion 
 				for (auto& pipe : pipes)
 				{
@@ -91,6 +95,14 @@ namespace game_engine
 				{
 					it = pipes.erase(it);
 					continue;
+				}
+
+				auto& tr = pipe.get_component<ecs::transform_component>();
+				if (tr.translate.x < -50)
+				{
+					pipe.destroy();
+					auto& tx = find_entity("score").get_component<ecs::text_component>();
+					tx.text = "Score: " + std::to_string(++score);
 				}
 
 				it++;

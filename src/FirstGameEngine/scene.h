@@ -96,6 +96,13 @@ namespace game_engine::ecs
 			spawner_script.bind<pipe_spawner>();
 			spawner_script.name = "pipe_spawner";
 
+			auto score = add_entity("score");
+			auto& s_tr = score.get_component<transform_component>();
+			s_tr.translate = vec2f(120, 20);
+			auto& tx = score.add_component<text_component>();
+			tx.text = "Score: 0";
+			tx.font = font->id;
+
 			for (auto& sys : _systems)
 			{
 				sys->start();
