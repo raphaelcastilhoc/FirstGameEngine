@@ -12,6 +12,7 @@
 #include "script_system.h"
 #include "player_controller.h"
 #include "scrolling_ground.h"
+#include "pipe_spawner.h"
 
 namespace game_engine::ecs
 {
@@ -89,6 +90,11 @@ namespace game_engine::ecs
 			player.add_component<sprite_component>().sprite = fly->id;
 			auto& cl = player.add_component<collider_component>();
 			cl.collider = { 0, 0, 58, 38 };
+
+			auto spawner = add_entity("spawner");
+			auto& spawner_script = spawner.add_component<script_component>();
+			spawner_script.bind<pipe_spawner>();
+			spawner_script.name = "pipe_spawner";
 
 			for (auto& sys : _systems)
 			{

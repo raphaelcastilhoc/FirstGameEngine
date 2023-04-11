@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -149,7 +149,9 @@
     <ClInclude Include="ecs_registry.h" />
     <ClInclude Include="event_system.h" />
     <ClInclude Include="physics.h" />
+    <ClInclude Include="pipe_spawner.h" />
     <ClInclude Include="player_controller.h" />
+    <ClInclude Include="random.h" />
     <ClInclude Include="rigidbody2.h" />
     <ClInclude Include="rigidbody_system.h" />
     <ClInclude Include="scene.h" />
