@@ -20,7 +20,10 @@ namespace game_engine
 		{
 			for (auto& [_, list] : _data)
 			{
-				for (auto a : list) { GAMEENGINE_DELETE(a); }
+				for (auto a : list)
+				{
+					GAMEENGINE_DELETE(a);
+				}
 			}
 			_data.clear();
 		}

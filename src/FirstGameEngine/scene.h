@@ -33,7 +33,11 @@ namespace game_engine::ecs
 
 		GAMEENGINE_INLINE ~scene()
 		{
-			for (auto& s : _systems) { GAMEENGINE_DELETE(s); }
+			for (auto& s : _systems)
+			{
+				GAMEENGINE_DELETE(s);
+			}
+
 			_registry.clear();
 			_systems.clear();
 		}

@@ -13,10 +13,22 @@ namespace game_engine
     static bool is_running = true;
     static float delta_time;
     static float last_tick;
+    static app_config config;
+    static ecs::scene* scene = NULL;
 
     GAMEENGINE_INLINE bool on_quit(const quit_event&)
     {
         return is_running = false;
+    }
+
+    GAMEENGINE_INLINE bool on_key(const keydown_event& e)
+    {
+        if (e.key == SDL_SCANCODE_R)
+        {
+            scene->deserialize(config.scene);
+        }
+
+        return false;
     }
 
     GAMEENGINE_INLINE void compute_delta_time()
@@ -29,8 +41,10 @@ namespace game_engine
         last_tick = get_ticks();
     }
 
-    void run_application(const app_config& config)
+    void run_application(const app_config& cfg)
     {
+        config = cfg;
+
         if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
         {
             GAMEENGINE_ERROR("%s", SDL_GetError());
@@ -73,13 +87,11 @@ namespace game_engine
 
         auto dispatcher = input::get_dispatcher();
         dispatcher->add_callback<quit_event>(on_quit);
+        dispatcher->add_callback<keydown_event>(on_key);
 
-        auto scene = new ecs::scene(renderer);
-        /*scene->start();
-
-        scene->serialize("resource/serialization/scene.yaml");*/
-
-        scene->deserialize("resource/serialization/scene.yaml");
+        scene = new ecs::scene(renderer);
+        scene->start();
+        scene->serialize(config.scene);
 
         last_tick = get_ticks();
 

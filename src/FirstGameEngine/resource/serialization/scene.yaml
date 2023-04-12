@@ -1,6 +1,6 @@
 entities:
   - info_component:
-      uuid: 3321786769237786719
+      uuid: 8932827254088456766
       name: background
       tag: default
     transform_component:
@@ -8,10 +8,10 @@ entities:
       rotation: 0
       scale: [1, 1]
     sprite_component:
-      sprite: 17393046472931546806
+      sprite: 12001902579783534189
       flip: 0
   - info_component:
-      uuid: 82702090904908603
+      uuid: 9982581163905126629
       name: ground
       tag: default
     transform_component:
@@ -28,12 +28,12 @@ entities:
       height: 265
       disabled: false
     sprite_component:
-      sprite: 10478384167842963115
+      sprite: 4371811846243815470
       flip: 0
     script_component:
       name: scrolling_ground
   - info_component:
-      uuid: 1187229561977435458
+      uuid: 12929996059827840422
       name: player
       tag: default
     transform_component:
@@ -50,12 +50,12 @@ entities:
       height: 38
       disabled: false
     sprite_component:
-      sprite: 4773280551390971971
+      sprite: 13197173125816179479
       flip: 0
     script_component:
       name: player_controller
   - info_component:
-      uuid: 17350437521357976780
+      uuid: 3765319434480797465
       name: spawner
       tag: default
     transform_component:
@@ -65,7 +65,7 @@ entities:
     script_component:
       name: pipe_spawner
   - info_component:
-      uuid: 1848161814358625999
+      uuid: 11969406633878784731
       name: score
       tag: default
     transform_component:
@@ -78,39 +78,39 @@ entities:
       B: 0
       A: 255
       text: "Score: 0"
-      font: 11921378710372631848
+      font: 2222175870000781490
       flip: 0
 assets:
   - texture:
-      id: 16534808640011932820
+      id: 13323423160870601611
       name: dead
       source: resource/textures/dead.png
   - texture:
-      id: 4773280551390971971
+      id: 13197173125816179479
       name: fly
       source: resource/textures/fly.png
   - texture:
-      id: 17767643938490054746
+      id: 6417253239740367706
       name: pipe
       source: resource/textures/pipe.png
   - texture:
-      id: 10478384167842963115
+      id: 4371811846243815470
       name: ground
       source: resource/textures/ground.png
   - texture:
-      id: 17393046472931546806
+      id: 12001902579783534189
       name: background
       source: resource/textures/background.png
   - audio:
-      id: 9892875552255950696
+      id: 16196494680891534392
       name: music
       source: resource/audios/song.mp3
   - audio:
-      id: 3883873540190005318
+      id: 17072786343489583801
       name: boom
       source: resource/audios/boom.wav
   - font:
-      id: 11921378710372631848
+      id: 2222175870000781490
       name: font
       size: 30
       source: resource/fonts/font.ttf

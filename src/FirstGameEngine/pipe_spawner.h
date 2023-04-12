@@ -31,7 +31,7 @@ namespace game_engine
 
 				auto score = find_entity("score");
 				auto& score_text = score.get_component<ecs::text_component>();
-				score_text.text = "GAME OVER";
+				score_text.text = "r to restart";
 
 				// stop all pipes motion 
 				for (auto& pipe : pipes)
