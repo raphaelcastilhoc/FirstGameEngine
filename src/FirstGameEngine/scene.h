@@ -122,6 +122,17 @@ namespace game_engine::ecs
 			this->_systems.push_back(new_system);
 		}
 
+		GAMEENGINE_INLINE void serialize(const std::string& path)
+		{
+			YAML::Emitter emitter;
+			emitter << YAML::BeginMap;
+			ecs::serializer(&_registry).serialize(emitter);
+			emitter << YAML::EndMap;
+
+			std::ofstream filepath(path);
+			filepath << emitter.c_str();
+		}
+
 	private:
 		std::vector<ecs::system*> _systems;
 		SDL_Renderer* _renderer = NULL;

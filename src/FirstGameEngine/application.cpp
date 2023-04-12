@@ -77,6 +77,8 @@ namespace game_engine
         auto scene = new ecs::scene(renderer);
         scene->start();
 
+        scene->serialize("resource/serialization/scene.yaml");
+
         last_tick = get_ticks();
 
         while (is_running)

@@ -1,0 +1,82 @@
+entities:
+  - info_component:
+      uuid: 1572260241754179672
+      name: background
+      tag: default
+    transform_component:
+      translate: [0, 0]
+      rotation: 0
+      scale: [1, 1]
+    sprite_component:
+      sprite: 6210928042039258981
+      flip: 0
+  - info_component:
+      uuid: 10731341113750809877
+      name: ground
+      tag: default
+    transform_component:
+      translate: [0, 620]
+      rotation: 0
+      scale: [1, 1]
+    rigidbody_component:
+      gravity: 0
+      velocity: [-100, 0]
+      disabled: false
+      force: [0, 0]
+    collider_component:
+      width: 711
+      height: 265
+      disabled: false
+    sprite_component:
+      sprite: 18411854630946758330
+      flip: 0
+    script_component:
+      name: scrolling_ground
+  - info_component:
+      uuid: 13376506172729234999
+      name: player
+      tag: default
+    transform_component:
+      translate: [126, 360]
+      rotation: 0
+      scale: [0.5, 0.5]
+    rigidbody_component:
+      gravity: 25
+      velocity: [0, 0]
+      disabled: false
+      force: [0, 0]
+    collider_component:
+      width: 58
+      height: 38
+      disabled: false
+    sprite_component:
+      sprite: 9099725578211261167
+      flip: 0
+    script_component:
+      name: player_controller
+  - info_component:
+      uuid: 18191426939958357446
+      name: spawner
+      tag: default
+    transform_component:
+      translate: [0, 0]
+      rotation: 0
+      scale: [1, 1]
+    script_component:
+      name: pipe_spawner
+  - info_component:
+      uuid: 17550550334004744027
+      name: score
+      tag: default
+    transform_component:
+      translate: [120, 20]
+      rotation: 0
+      scale: [1, 1]
+    text_component:
+      R: 0
+      G: 0
+      B: 0
+      A: 255
+      text: "Score: 0"
+      font: 11506047022032753040
+      flip: 0
