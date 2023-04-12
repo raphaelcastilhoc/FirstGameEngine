@@ -14,6 +14,7 @@
 #include "scrolling_ground.h"
 #include "pipe_spawner.h"
 #include "serializer.h"
+#include "asset_serializer.h"
 
 namespace game_engine::ecs
 {
@@ -61,14 +62,14 @@ namespace game_engine::ecs
 			auto fly = _assets.load_texture("resource/textures/fly.png", "fly", _renderer);
 			auto pipe = _assets.load_texture("resource/textures/pipe.png", "pipe", _renderer);
 			auto ground = _assets.load_texture("resource/textures/ground.png", "ground", _renderer);
-			
+
 			auto font = _assets.load_font("resource/fonts/font.ttf", "font", 30);
 
 			_assets.load_audio("resource/audios/song.mp3", "music");
 			_assets.load_audio("resource/audios/boom.wav", "boom");
 
 			auto bg = add_entity("background");
-			auto background = _assets.load_texture("resource/textures/background.png", "bg", _renderer);
+			auto background = _assets.load_texture("resource/textures/background.png", "background", _renderer);
 			bg.add_component<sprite_component>().sprite = background->id;
 
 			auto gd = add_entity("ground");
@@ -107,9 +108,9 @@ namespace game_engine::ecs
 			tx.text = "Score: 0";
 			tx.font = font->id;
 
-			for (auto& sys : _systems)
+			for (auto& system : _systems)
 			{
-				sys->start();
+				system->start();
 			}
 		}
 
@@ -127,10 +128,40 @@ namespace game_engine::ecs
 			YAML::Emitter emitter;
 			emitter << YAML::BeginMap;
 			ecs::serializer(&_registry).serialize(emitter);
+			asset_serializer(&_assets).serialize(emitter);
 			emitter << YAML::EndMap;
 
 			std::ofstream filepath(path);
 			filepath << emitter.c_str();
+		}
+
+		GAMEENGINE_INLINE bool deserialize(const std::string& path)
+		{
+			YAML::Node root;
+			try
+			{
+				root = YAML::LoadFile(path);
+			}
+			catch (YAML::ParserException e)
+			{
+				GAMEENGINE_INFO("failed to deserialize scene!");
+				return false;
+			}
+
+			if (auto entities = root["entities"])
+			{
+				ecs::serializer(&_registry).deserialize(entities);
+			}
+
+			if (auto assets = root["assets"])
+			{
+				asset_serializer(&_assets).deserialize(assets, _renderer);
+			}
+
+			for (auto& system : _systems)
+			{
+				system->start();
+			}
 		}
 
 	private:

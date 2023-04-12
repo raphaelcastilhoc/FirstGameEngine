@@ -159,5 +159,6 @@ namespace game_engine
 
 	private:
 		std::unordered_map<asset_typeid, std::vector<asset*>> _data;
+		friend struct asset_serializer;
 	};
 }

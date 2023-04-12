@@ -17,7 +17,20 @@ namespace game_engine::ecs
 
         GAMEENGINE_INLINE void deserialize(YAML::Node nodes)
         {
-            
+            _registry->clear();
+
+            for (auto node : nodes)
+            {
+                ecs::entity e(_registry);
+                deserialize_info(node, e);
+                deserialize_transform(node, e);
+                deserialize_rigidbody(node, e);
+                deserialize_collider(node, e);
+                deserialize_sprite(node, e);
+                deserialize_animation(node, e);
+                deserialize_text(node, e);
+                deserialize_script(node, e);
+            }
         }
 
         GAMEENGINE_INLINE void serialize(YAML::Emitter& em)

@@ -177,6 +177,9 @@
     <ClInclude Include="serializer.h">
       <Filter>Header Files\engine\ecs</Filter>
     </ClInclude>
+    <ClInclude Include="asset_serializer.h">
+      <Filter>Header Files\engine\assets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

@@ -132,6 +132,7 @@
     <ClInclude Include="application.h" />
     <ClInclude Include="asset.h" />
     <ClInclude Include="asset_registry.h" />
+    <ClInclude Include="asset_serializer.h" />
     <ClInclude Include="audio.h" />
     <ClInclude Include="behavior.h" />
     <ClInclude Include="collision_system.h" />

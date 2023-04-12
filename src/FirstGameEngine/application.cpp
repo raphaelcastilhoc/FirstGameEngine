@@ -75,9 +75,11 @@ namespace game_engine
         dispatcher->add_callback<quit_event>(on_quit);
 
         auto scene = new ecs::scene(renderer);
-        scene->start();
+        /*scene->start();
 
-        scene->serialize("resource/serialization/scene.yaml");
+        scene->serialize("resource/serialization/scene.yaml");*/
+
+        scene->deserialize("resource/serialization/scene.yaml");
 
         last_tick = get_ticks();
 
